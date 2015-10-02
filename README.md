@@ -1,3 +1,3 @@
-# Login_1DV608
-Code repository for assignment 2 in the course 1DV608.
+# 1DV608_Assignment_4
+Code repository for assignment 4 in the course 1DV608.
 
