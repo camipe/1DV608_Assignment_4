@@ -7,6 +7,7 @@ require_once("Settings.php");
 
 require_once("controller/LoginController.php");
 require_once("controller/PageController.php");
+require_once("controller/RegisterController.php");
 
 require_once("view/BaseView.php");
 require_once("view/NavigationView.php");
