@@ -224,25 +224,33 @@ class LoginView {
 	private function getLogoutButtonHTML($message) {
 		return "<form  method='post' >
 			<p id='" . self::$messageId . "'>$message</p>
-			<input type='submit' name='" . self::$logout . "' value='logout'/>
+			<div class='form-group'>
+				<input type='submit' name='" . self::$logout . "' class='btn btn-default' value='logout'/>
+			</div>
 			</form>";
 	}
 
 	private function generateLoginFormHTML($message) {
-		return "<form method='post' > 
+		return "<form method='post'> 
 				<fieldset>
 					<legend>Login - enter Username and password</legend>
 					<p id='".self::$messageId."'>$message</p>
-					<label for='".self::$name."'>Username :</label>
-					<input type='text' id='".self::$name."' name='".self::$name."' value='".$this->getRequestUserName()."'/>
-
-					<label for='".self::$password."'>Password :</label>
-					<input type='password' id='".self::$password."' name='".self::$password."'/>
-
-					<label for='".self::$keep."'>Keep me logged in  :</label>
-					<input type='checkbox' id='".self::$keep."' name='".self::$keep."'/>
-					
-					<input type='submit' name='".self::$login."' value='login'/>
+					<div class='form-group'>
+						<label for='".self::$name."'>Username :</label>
+						<input type='text' id='".self::$name."' class='form-control' name='".self::$name."' value='".$this->getRequestUserName()."'/>
+					</div>
+					<div class='form-group'>
+						<label for='".self::$password."'>Password :</label>
+						<input type='password' id='".self::$password."' class='form-control' name='".self::$password."'/>
+					</div>
+					<div class='checkbox'>
+						<label for='".self::$keep."'>
+							<input type='checkbox' id='".self::$keep."' name='".self::$keep."'/> Keep me logged in 
+						</label>
+					</div>
+					<div class='form-group'>
+						<input type='submit' name='".self::$login."' class='btn btn-default' value='login'/>
+					</div>
 				</fieldset>
 			</form>
 		";
