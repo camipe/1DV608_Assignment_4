@@ -2,7 +2,7 @@
 
 namespace view;
 
-class RegisterView {
+class RegisterView extends BaseView {
 
 	/**
 	 * These names are used in $_POST
@@ -38,7 +38,7 @@ class RegisterView {
 			</form>";
 	}
 
-	public function doRegisterForm() {
+	public function render() {
 		$message = "";
 
 		$html = "<h2>Register new user</h2>";

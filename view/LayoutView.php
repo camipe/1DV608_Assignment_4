@@ -6,7 +6,7 @@
 namespace view;
 
 class LayoutView {
-  public function render($isLoggedIn, LoginView $v, DateTimeView $dtv) {
+  public function render($isLoggedIn, BaseView $v, NavigationView $nv, DateTimeView $dtv) {
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,6 +18,16 @@ class LayoutView {
   <body>
     <div class="container">
       <h1>Assignment 4</h1>
+
+      <?php 
+        if ($nv->inRegistration()) {
+          echo $nv->getLinkToLogin();
+        }
+        else {
+          echo $nv->getLinkToRegister();
+        }
+
+      ?>
       <?php 
         if ($isLoggedIn) {
           echo "<h2>Logged in</h2>";
@@ -26,7 +36,7 @@ class LayoutView {
       }
       ?>
       <?php 
-        echo $v->response();
+        echo $v->render();
 
         $dtv->show();
       ?>

@@ -8,19 +8,25 @@ class PageController {
 		// Create model
 		$m = new \model\LoginModel();
 
-		// Create views
-		$rv = new \view\RegisterView();
-		$v = new \view\LoginView($m);
-		$c = new \controller\LoginController($m, $v);
+		// Create general views
+		$nv = new \view\NavigationView();
 		$dtv = new \view\DateTimeView();
 		$lv = new \view\LayoutView();
+		
+		// Run register
+		if ($nv->inRegistration() == true) {
+			$v = new \view\RegisterView();
+		}
 
-		//Create and run controllers run them before sending to render
-		$c = new \controller\LoginController($m, $v);
-		$c->doControl();
+		// Run login
+		if ($nv->inRegistration() == false) {
+			$v = new \view\LoginView($m);
+			$c = new \controller\LoginController($m, $v);
+			$c->doControl();
+		}
 
 		//Generate output
-		$lv->render($m->isLoggedIn($v->getUserClient()), $v, $dtv);
+		$lv->render($m->isLoggedIn($v->getUserClient()), $v, $nv, $dtv);
 
 	}
 }
