@@ -18,7 +18,6 @@ class RegisterController {
 
 		if ($this->view->userWantsToRegister()) {
 			$newUser = $this->view->getNewUser();
-			var_dump($newUser);
 			// TODO: Implement DAL
 		} 
 	}
