@@ -12,7 +12,6 @@ abstract class BaseView {
 	 */
 	protected static $sessionSaveLocation = "\\view\\message";
 
-	
 
 	public function getUserClient() {
 		return new \model\UserClient($_SERVER["REMOTE_ADDR"], $_SERVER["HTTP_USER_AGENT"]);

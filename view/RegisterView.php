@@ -52,6 +52,8 @@ class RegisterView extends BaseView {
 		} catch (\model\UsernameAndPasswordMissingException $e) {
 			$this->message = "Username has too few characters, at least 3 characters. 
 							  Password has too few characters, at least 6 characters.";
+		} catch (\model\InvalidCharException $e) {
+			$this->message = "Username contains invalid characters.";
 		} catch (\view\PasswordsNoMatchException $e) {
 			$this->message = "Passwords do not match.";
 		} catch (Exception $e) {
@@ -67,7 +69,7 @@ class RegisterView extends BaseView {
 					<p id='".self::$messageID."'>" . $this->message . "</p>
 					<div class='form-group'>
 						<label for='".self::$username."'>Username :</label>
-						<input type='text' id='".self::$username."' class='form-control' name='".self::$username."' value=''/>
+						<input type='text' id='".self::$username."' class='form-control' name='".self::$username."' value='" . strip_tags($this->getUserName()) . "'/>
 					</div>
 					<div class='form-group'>
 						<label for='".self::$password."'>Password :</label>
