@@ -2,6 +2,8 @@
 
 namespace view;
 
+class PasswordsNoMatchException extends \Exception {};
+
 class RegisterView extends BaseView {
 
 	/**
@@ -14,11 +16,55 @@ class RegisterView extends BaseView {
 	private static $rptPassword = "RegisterView::PasswordRepeat";
 	private static $messageID = "RegisterView::Message";
 
-	private function generateRegisterForm($message) {
+	public $message = "";
+
+	public function userWantsToRegister() {
+		return isset($_POST[self::$register]);	
+	}
+
+
+	private function getUserName() {
+		if (isset($_POST[self::$username]))
+			return trim($_POST[self::$username]);
+	}
+
+	private function getPassword() {
+		if ($this->checkPasswordMatch() == true) {
+			return trim($_POST[self::$password]);
+		}
+	}
+
+	private function checkPasswordMatch() {
+		if (isset($_POST[self::$password]) && $_POST[self::$password] == $_POST[self::$rptPassword]) {
+			return true;
+		} else {
+			throw new PasswordsNoMatchException();			
+		}
+	}
+
+	public function getNewUser() {
+		try {
+			return new \model\User($this->getUserName(), $this->getPassword());
+		} catch (\model\ShortUsernameException $e) {
+			$this->message = "Username has too few characters, at least 3 characters.";
+		} catch (\model\ShortPasswordException $e) {
+			$this->message = "Password has too few characters, at least 6 characters.";		
+		} catch (\model\UsernameAndPasswordMissingException $e) {
+			$this->message = "Username has too few characters, at least 3 characters. 
+							  Password has too few characters, at least 6 characters.";
+		} catch (\view\PasswordsNoMatchException $e) {
+			$this->message = "Passwords do not match.";
+		} catch (Exception $e) {
+			$this->message = "Unspecified error";
+		} 
+		return null;
+	}
+
+	private function generateRegisterForm() {
 		return "<form method='post' > 
 				<fieldset>
 					<legend> Register - enter Username and password</legend>
-					<p id='".self::$messageID."'>$message</p>
+					<p id='".self::$messageID."'>" . $this->message . "</p>
 					<div class='form-group'>
 						<label for='".self::$username."'>Username :</label>
 						<input type='text' id='".self::$username."' class='form-control' name='".self::$username."' value=''/>
@@ -39,11 +85,10 @@ class RegisterView extends BaseView {
 	}
 
 	public function render() {
-		$message = "";
 
 		$html = "<h2>Register new user</h2>";
 
-		$html .= $this->generateRegisterForm($message);
+		$html .= $this->generateRegisterForm();
 
 		return $html;
 	}

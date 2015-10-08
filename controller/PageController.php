@@ -16,7 +16,8 @@ class PageController {
 		// Run register
 		if ($nv->inRegistration() == true) {
 			$v = new \view\RegisterView();
-			$c = new \controller\RegisterController();
+			$c = new \controller\RegisterController($v);
+			$c->doRegister();
 		}
 
 		// Run login

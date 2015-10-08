@@ -20,12 +20,6 @@ class LoginView extends BaseView {
 	private static $messageId = "LoginView::Message";
 
 	/**
-	 * This name is used in session
-	 * @var string
-	 */
-	private static $sessionSaveLocation = "\\view\\LoginView\\message";
-
-	/**
 	 * view state set by controller through setters
 	 * @var boolean
 	 */
@@ -42,7 +36,6 @@ class LoginView extends BaseView {
 	 * @param \model\LoginModel $model
 	 */
 	public function __construct(\model\LoginModel $model) {
-		self::$sessionSaveLocation .= \Settings::APP_SESSION_NAME;
 		$this->model = $model;
 	}
 

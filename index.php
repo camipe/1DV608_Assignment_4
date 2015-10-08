@@ -5,6 +5,8 @@
   */
 require_once("Settings.php");
 
+require_once "model/User.php";
+
 require_once("view/BaseView.php");
 require_once("view/NavigationView.php");
 require_once("view/DateTimeView.php");
