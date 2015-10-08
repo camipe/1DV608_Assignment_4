@@ -179,20 +179,20 @@ class LoginView extends BaseView {
 		return $this->generateLoginFormHTML($message);
 	}
 
-	private function redirect($message) {
-		$_SESSION[self::$sessionSaveLocation] = $message;
-		$actual_link = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
-		header("Location: $actual_link");
-	}
+	// private function redirect($message) {
+	// 	$_SESSION[self::$sessionSaveLocation] = $message;
+	// 	$actual_link = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+	// 	header("Location: $actual_link");
+	// }
 
-	private function getSessionMessage() {
-		if (isset($_SESSION[self::$sessionSaveLocation])) {
-			$message = $_SESSION[self::$sessionSaveLocation];
-			unset($_SESSION[self::$sessionSaveLocation]);
-			return $message;
-		}
-		return "";
-	}
+	// private function getSessionMessage() {
+	// 	if (isset($_SESSION[self::$sessionSaveLocation])) {
+	// 		$message = $_SESSION[self::$sessionSaveLocation];
+	// 		unset($_SESSION[self::$sessionSaveLocation]);
+	// 		return $message;
+	// 	}
+	// 	return "";
+	// }
 
 	/**
 	 * unset cookies both locally and on the client
