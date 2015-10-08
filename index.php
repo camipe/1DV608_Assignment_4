@@ -5,16 +5,14 @@
   */
 require_once("Settings.php");
 
-require_once("controller/LoginController.php");
-require_once("controller/PageController.php");
-require_once("controller/RegisterController.php");
-
 require_once("view/BaseView.php");
 require_once("view/NavigationView.php");
 require_once("view/DateTimeView.php");
 require_once("view/LayoutView.php");
-require_once("view/RegisterView.php");
-require_once("view/LoginView.php");
+
+require_once("controller/LoginController.php");
+require_once("controller/PageController.php");
+require_once("controller/RegisterController.php");
 
 if (Settings::DISPLAY_ERRORS) {
 	error_reporting(-1);

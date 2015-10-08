@@ -5,9 +5,6 @@
   */
 namespace view;
 
-// TODO: Find out why the application fails when I remove this even though it's in index.php as well.
-require_once("view/BaseView.php");
-
 class LoginView extends BaseView {
 	/**
 	 * These names are used in $_POST
