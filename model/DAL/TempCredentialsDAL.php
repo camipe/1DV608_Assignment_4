@@ -35,6 +35,6 @@ class TempCredentialsDAL {
 
 	private function getFileName($userName) {
 		//TODO: replace the addslashes with something that makes username safe for use in filesystem
-		return \Settings::DATAPATH . self::$dataFolder . addslashes($userName);
+		return \Settings::DATAPATH . self::$dataFolder . sha1($userName);
 	}
 }

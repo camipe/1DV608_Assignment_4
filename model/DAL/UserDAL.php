@@ -29,6 +29,6 @@ class UserDAL {
 	}
 
 	private function getFileName($userName) {
-		return \Settings::DATAPATH  . self::$dataFolder . addslashes($userName);
+		return \Settings::DATAPATH  . self::$dataFolder . sha1($userName);
 	}
 }
