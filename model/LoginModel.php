@@ -67,7 +67,7 @@ class LoginModel {
 		$requestedUser = $this->userDAL->loadUser($uc->getName());
 
 		if ($requestedUser != null) {
-			$loginByUsernameAndPassword = $requestedUser->getUserName() === $uc->getName() && $requestedUser->getPassword() === $uc->getPassword();
+			$loginByUsernameAndPassword = $requestedUser->getUserName() === $uc->getName() && password_verify($uc->getPassword(), $requestedUser->getPassword());
 		} else {
 			$loginByUsernameAndPassword = false;
 		}

@@ -29,7 +29,8 @@ class User {
 		}
 		
 		$this->username = $username;
-		$this->password = $password;
+		// Hash and save password
+		$this->password = password_hash($password, PASSWORD_DEFAULT);
 	}
 
 	public function getUserName() {
