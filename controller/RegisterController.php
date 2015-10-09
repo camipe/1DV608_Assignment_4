@@ -10,15 +10,20 @@ class RegisterController {
 
 	private $view;
 	
-	public function __construct(\view\RegisterView $view) {
-		$this->view = $view;		
+	public function __construct(\model\RegisterModel $model, \view\RegisterView $view) {
+		$this->view = $view;
+		$this->model = $model;		
 	}
 
 	public function doRegister() {
 
 		if ($this->view->userWantsToRegister()) {
 			$newUser = $this->view->getNewUser();
-			// TODO: Implement DAL
+			try {
+				$this->model->saveUser($newUser); 
+			} catch (\model\dal\UserExistsException $e) {
+				$this->view->setUserExistsMessage();
+			}
 		} 
 	}
 }

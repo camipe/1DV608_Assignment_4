@@ -7,7 +7,7 @@ namespace model;
 
 require_once("UserCredentials.php");
 require_once("TempCredentials.php");
-require_once("TempCredentialsDAL.php");
+require_once("DAL/TempCredentialsDAL.php");
 require_once("LoggedInUser.php");
 require_once("UserClient.php");
 

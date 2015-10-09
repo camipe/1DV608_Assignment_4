@@ -6,6 +6,9 @@
 namespace model;
 
 class TempCredentialsDAL {
+
+	private static $dataFolder = "temp/";
+
 	/**
 	 * 
 	 * @param  String $userName [description]
@@ -32,6 +35,6 @@ class TempCredentialsDAL {
 
 	private function getFileName($userName) {
 		//TODO: replace the addslashes with something that makes username safe for use in filesystem
-		return \Settings::DATAPATH . addslashes($userName);
+		return \Settings::DATAPATH . self::$dataFolder . addslashes($userName);
 	}
 }

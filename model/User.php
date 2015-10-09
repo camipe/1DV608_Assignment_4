@@ -27,8 +27,12 @@ class User {
 		if (mb_strlen($password) < 6) {
 			throw new ShortPasswordException();
 		}
-
+		
 		$this->username = $username;
 		$this->password = $password;
+	}
+
+	public function getUserName() {
+		return $this->username;
 	}
 }
