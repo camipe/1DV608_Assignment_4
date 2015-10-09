@@ -43,7 +43,7 @@ class RegisterView extends BaseView {
 	}
 
 	public function setUserExistsMessage() {
-		$this->message = "User exists, pick another username";
+		$this->message = "User exists, pick another username.";
 	}
 
 	public function getNewUser() {
