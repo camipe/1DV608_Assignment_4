@@ -2,8 +2,6 @@
 
 namespace model;
 
-require_once("DAL/UserDAL.php");
-
 class RegisterModel {
 
 	private $userDAL;

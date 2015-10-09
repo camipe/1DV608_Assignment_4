@@ -35,4 +35,8 @@ class User {
 	public function getUserName() {
 		return $this->username;
 	}
+
+	public function getPassword() {
+		return $this->password;
+	}
 }

@@ -6,6 +6,7 @@
 require_once("Settings.php");
 
 require_once "model/User.php";
+require_once("model/DAL/UserDAL.php");
 
 require_once("view/BaseView.php");
 require_once("view/NavigationView.php");
