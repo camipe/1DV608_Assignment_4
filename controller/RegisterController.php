@@ -21,7 +21,8 @@ class RegisterController {
 			$newUser = $this->view->getNewUser();
 			if ($newUser != null) {
 				try {
-					$this->model->saveUser($newUser); 
+					$this->model->saveUser($newUser);
+					$this->view->registrationSuccess();
 				} catch (\model\dal\UserExistsException $e) {
 					$this->view->setUserExistsMessage();
 				}

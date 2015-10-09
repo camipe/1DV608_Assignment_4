@@ -42,6 +42,10 @@ class RegisterView extends BaseView {
 		}
 	}
 
+	public function registrationSuccess() {
+		$this->redirect("Registered new user.");
+	}
+
 	public function setUserExistsMessage() {
 		$this->message = "User exists, pick another username.";
 	}
