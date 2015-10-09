@@ -22,7 +22,6 @@ class RegisterView extends BaseView {
 		return isset($_POST[self::$register]);	
 	}
 
-
 	private function getUserName() {
 		if (isset($_POST[self::$username]))
 			return trim($_POST[self::$username]);
@@ -43,7 +42,7 @@ class RegisterView extends BaseView {
 	}
 
 	public function registrationSuccess() {
-		$this->redirect("Registered new user.");
+		$this->redirectWithUsername($this->getUserName(), "Registered new user.");
 	}
 
 	public function setUserExistsMessage() {

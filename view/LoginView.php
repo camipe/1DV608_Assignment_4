@@ -230,7 +230,7 @@ class LoginView extends BaseView {
 					<p id='".self::$messageId."'>$message</p>
 					<div class='form-group'>
 						<label for='".self::$name."'>Username :</label>
-						<input type='text' id='".self::$name."' class='form-control' name='".self::$name."' value='".$this->getRequestUserName()."'/>
+						<input type='text' id='".self::$name."' class='form-control' name='".self::$name."' value='". $this->getUserName()."'/>
 					</div>
 					<div class='form-group'>
 						<label for='".self::$password."'>Password :</label>
@@ -261,6 +261,10 @@ class LoginView extends BaseView {
 
 		if (isset($_COOKIE[self::$cookieName]))
 			return trim($_COOKIE[self::$cookieName]);
+
+		if (isset($_SESSION[self::$sessionUsernameSaveLocation])) 
+			return trim($_SESSION[self::$sessionUsernameSaveLocation]);
+
 		return "";
 	}
 

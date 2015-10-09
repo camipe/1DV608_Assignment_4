@@ -37,7 +37,7 @@ class LayoutView {
       ?>
       <?php 
         echo $v->render();
-        echo $_SERVER['PHP_SELF'];
+
         $dtv->show();
       ?>
       <div>

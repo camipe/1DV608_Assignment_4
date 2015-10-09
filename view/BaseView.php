@@ -11,6 +11,7 @@ abstract class BaseView {
 	 * @var string
 	 */
 	protected static $sessionSaveLocation = "\\view\\message";
+	protected static $sessionUsernameSaveLocation = "\\model\\username";
 
 
 	public function getUserClient() {
@@ -18,6 +19,13 @@ abstract class BaseView {
 	}
 
 	protected function redirect($message) {
+		$_SESSION[self::$sessionSaveLocation] = $message;
+		$actual_link = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
+		header("Location: $actual_link");
+	}
+
+	protected function redirectWithUsername($username, $message) {
+		$_SESSION[self::$sessionUsernameSaveLocation] = $username;
 		$_SESSION[self::$sessionSaveLocation] = $message;
 		$actual_link = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 		header("Location: $actual_link");
