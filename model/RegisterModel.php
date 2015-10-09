@@ -2,7 +2,7 @@
 
 namespace model;
 
-require_once("DAL/userDAL.php");
+require_once("DAL/UserDAL.php");
 
 class RegisterModel {
 
