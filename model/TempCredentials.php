@@ -27,7 +27,5 @@ class TempCredentials {
 
 	public function getExpire() {
 		return $this->expire;
-	}
-
-	
+	}	
 }

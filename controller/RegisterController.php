@@ -19,6 +19,8 @@ class RegisterController {
 
 		if ($this->view->userWantsToRegister()) {
 			$newUser = $this->view->getNewUser();
+			// if user is null something went wrong in the input form. (Input missing or incorrect).
+			// and the rest of the code should not run
 			if ($newUser != null) {
 				try {
 					$this->model->saveUser($newUser);

@@ -28,6 +28,11 @@ class UserDAL {
 		file_put_contents($this->getFileName($user->getUserName()), serialize($user) );
 	}
 
+	/**
+	 * Creates a filename with complete path. Uses hashed username for unique name.
+	 * @param  [string] $userName 
+	 * @return [string] filepath as string
+	 */
 	private function getFileName($userName) {
 		return \Settings::DATAPATH  . self::$dataFolder . sha1($userName);
 	}

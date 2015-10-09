@@ -9,11 +9,6 @@ class TempCredentialsDAL {
 
 	private static $dataFolder = "temp/";
 
-	/**
-	 * 
-	 * @param  String $userName [description]
-	 * @return TempCredentials           [description]
-	 */
 	public function load($userName) {
 		if ( file_exists(self::getFileName($userName)) ) {
 			$fileContent = file_get_contents(self::getFileName($userName));
@@ -21,20 +16,20 @@ class TempCredentialsDAL {
 			{
 				return unserialize($fileContent);
 			}
-
 		}
-
 		return null;
 	}
-
-	
 
 	public function save(LoggedInUser $user, TempCredentials $t) {
 		file_put_contents( self::getFileName($user->getUserName()), serialize($t) );
 	}
 
+	/**
+	 * Creates a filename with complete path. Uses hashed username for unique name.
+	 * @param  [string] $userName 
+	 * @return [string] filepath as string
+	 */
 	private function getFileName($userName) {
-		//TODO: replace the addslashes with something that makes username safe for use in filesystem
 		return \Settings::DATAPATH . self::$dataFolder . sha1($userName);
 	}
 }

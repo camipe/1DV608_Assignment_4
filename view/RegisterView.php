@@ -18,6 +18,8 @@ class RegisterView extends BaseView {
 
 	public $message = "";
 
+	// POST-data
+
 	public function userWantsToRegister() {
 		return isset($_POST[self::$register]);	
 	}
@@ -33,6 +35,11 @@ class RegisterView extends BaseView {
 		}
 	}
 
+	/**
+	 * Checking if two passwords matches. Note this is used before sending the password to the model
+	 * since the model only cares about getting a password not two identical passwords.
+	 * @return [bool] 
+	 */
 	private function checkPasswordMatch() {
 		if (isset($_POST[self::$password]) && $_POST[self::$password] == $_POST[self::$rptPassword]) {
 			return true;

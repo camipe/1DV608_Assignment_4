@@ -16,16 +16,6 @@ class Settings {
 	const APP_SESSION_NAME = "LoginLab";
 
 	/**
-	 * Username of default user
-	 */
-	const USERNAME = "Admin";
-
-	/**
-	 * Password of default user
-	 */
-	const PASSWORD = "Password";
-
-	/**
 	 * Path to folder writable by www-data but not accessable by webserver
 	 */
 	const DATAPATH = "./data/";
@@ -34,7 +24,7 @@ class Settings {
 	 * Salt for creating temporary passwords
 	 * Should be a random string like "feje3-#GS"
 	 */
-	const SALT = "";
+	const SALT = "12dds%45!2";
 
 	/**
 	 * Show errors
