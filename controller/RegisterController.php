@@ -19,10 +19,12 @@ class RegisterController {
 
 		if ($this->view->userWantsToRegister()) {
 			$newUser = $this->view->getNewUser();
-			try {
-				$this->model->saveUser($newUser); 
-			} catch (\model\dal\UserExistsException $e) {
-				$this->view->setUserExistsMessage();
+			if ($newUser != null) {
+				try {
+					$this->model->saveUser($newUser); 
+				} catch (\model\dal\UserExistsException $e) {
+					$this->view->setUserExistsMessage();
+				}
 			}
 		} 
 	}
